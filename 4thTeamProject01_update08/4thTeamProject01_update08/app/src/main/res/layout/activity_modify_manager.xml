@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".manager.ModifyManagerActivity">
+
+  <androidx.core.widget.NestedScrollView
+      android:id="@+id/m_scrollview2"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:fillViewport="true"
+      app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <ImageView
+          android:id="@+id/m_imageView2"
+          android:layout_width="match_parent"
+          android:layout_height="154dp"
+          tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+      <TextView
+          android:id="@+id/m_storename2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="매장명"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/m_storeaddress3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="주소1"
+          android:textColor="@color/black" />
+
+      <TextView
+          android:id="@+id/m_storeaddress4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="주소2"
+          android:textColor="@color/black" />
+
+      <TextView
+          android:id="@+id/m_storetype2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="업태"
+          android:textColor="@color/black" />
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/et_mPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="전화번호" />
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/textView31"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="영업정보"
+          android:textColor="@color/black"
+          android:textSize="16sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운영시간"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/et_opentime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴  무  일"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/et_holiday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/textView40"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="매장소개"
+          android:textColor="@color/black" />
+
+      <EditText
+          android:id="@+id/et_info"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textPersonName"
+          android:text="매장소개글" />
+
+      <TextView
+          android:id="@+id/textView43"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="메뉴"
+          android:textColor="@color/black" />
+
+      <TextView
+          android:id="@+id/textView44"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="메뉴등록 예시 (메뉴이름:가격) 띄어쓰기(X)"
+          android:textColor="#0000FF" />
+
+      <TextView
+          android:id="@+id/textView45"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="그린샐러드(비건):8000,베지터블 파코다(비건):9000,베지터블 차우면:9000,그린샐러드(비건):8000,베지터블 커리:10000,달 타드카(비건):10000"
+          android:textColor="@color/black" />
+
+      <EditText
+          android:id="@+id/et_menu"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textLongMessage|textMultiLine"
+          android:scrollHorizontally="false"
+          android:text="메뉴리스트" />
+
+    </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
+
+  <LinearLayout
+      android:id="@+id/linearLayout2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/m_scrollview">
+
+    <Button
+        android:id="@+id/btn_modregist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="등록하기"
+        app:backgroundTint="#FF9800" />
+
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
