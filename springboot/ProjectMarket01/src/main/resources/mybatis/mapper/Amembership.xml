@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.study.springboot.dao.AMembershipDao">
+
+<select resultType="_int" parameterType="java.util.HashMap" id="getLoginResult">
+	<![CDATA[select count(*) from customer_list where c_id = #{item1} and c_pw = #{item2}]]>
+</select>
+
+<select resultType="_int" parameterType="java.util.HashMap" id="andCheckId">
+	<![CDATA[select count(*) from customer_list where c_id = #{c_id}]]>
+</select>
+
+<select resultType="_int" parameterType="java.util.HashMap" id="andCheckNickName">
+	<![CDATA[select count(*) from customer_list where nickname = #{nickName}]]>
+</select>
+
+
+<select resultType="com.study.springboot.dto.AReservationDto" id="getCustomerResList">
+	<![CDATA[select * from booked_list where c_id = #{_id} order by r_index desc]]>
+</select>
+<select resultType="com.study.springboot.dto.AReservationDto" id="getReservationList">
+	<![CDATA[select * from booked_list where r_name = #{0} order by r_index desc]]>
+</select>
+
+
+<select resultType="com.study.springboot.dto.ACustomerListDto" id="getMyInfo">
+	<![CDATA[select c_name, c_id, c_phonem c_email, nickname, tdate from customer_list where c_id = #{_id}]]>
+</select>
+
+
+<select resultType="com.study.springboot.dto.ACustomerListDto" id="getMyProfile">
+	<![CDATA[select * from customer_list where c_id = #{_id}]]>
+</select>
+
+<select resultType="com.study.springboot.dto.AReviewListDto" id="getMyReview">
+	<![CDATA[select * from review where c_id = #{_id}]]>
+</select>
+
+<select id="getrestaurantInfoMg" resultType="com.study.springboot.dto.ARestaurantListDto">
+		select * from restaurant_list where m_id = #{_id}
+</select>
+
+<select id="searchR_name" resultType="com.study.springboot.dto.ACustomerListDto">
+		select r_name from customer_list where c_id = #{0}
+</select>
+
+
+<insert parameterType="java.util.HashMap" id="getJoinResult">
+	<![CDATA[insert into customer_list(c_index, c_name, c_id, c_pw, c_phone, c_eMail, nickname, token)
+    		values(customer_list_seq.nextval, #{item1}, #{item2}, #{item3}, #{item4}, #{item5}, #{item6}, #{item7})]]>
+</insert>
+
+<update parameterType="java.util.HashMap" id="setUpdateMyProfile">
+	<![CDATA[update customer_list set c_pw = #{item1}, c_phone = #{item2}, c_eMail = #{item3} where c_id = #{item4}]]>
+</update>
+
+<update parameterType="java.util.HashMap" id="setStoreUpdate">
+	<![CDATA[update restaurant_list set r_number = #{item1}, r_menu = #{item2} where m_id = #{item3}]]>
+</update>
+
+<update id="setUpdateNickname">
+	update customer_list set nickname = #{param1} where id = #{param2}
+</update>
+<select resultType="com.study.springboot.dto.ASirenDto" id="getCustomersirenList">
+	<![CDATA[select * from siren_list where c_id = #{_id} order by r_index desc]]>
+</select>
+
+</mapper>

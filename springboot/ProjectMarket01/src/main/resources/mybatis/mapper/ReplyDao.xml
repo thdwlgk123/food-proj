@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.study.springboot.dao.ItReplyDao">
+
+<!-- 	<select id="replyView_N" resultType="com.study.springboot.dto.ReplyDto">
+		select * from bbs_reply
+ 		 where viewpart_id = (select id from notice_yt
+                       		   where id = #{0})
+ 		 order by id desc
+	</select>
+	<insert id="writeReply" parameterType="java.util.HashMap">
+		insert into bbs_reply (id, userId, writer, viewPart_id, reply_content)
+			values (bbs_reply_seq.nextval, #{item1}, #{item2}, #{item3}, #{item4})
+	</insert>
+	<delete id="deleteReply">
+		delete from bbs_reply where id = #{0}
+	</delete> -->
+	
+</mapper>

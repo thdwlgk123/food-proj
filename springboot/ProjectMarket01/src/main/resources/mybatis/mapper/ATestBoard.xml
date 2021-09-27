@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.springboot.dao.ITestBoardDao">
+
+	<select id="testSelect" resultType="com.study.springboot.dto.TestBoardDto">
+	select *
+  			from  (select m_number,r_number,r_menu,r_name,r_adress1,r_adress2,
+        	round(( 6371 * acos( cos( #{param1}*acos(-1)/180 ) * cos( coordinates_y*acos(-1)/180 ) * cos( coordinates_x*acos(-1)/180 - #{param2}*acos(-1)/180 ) + sin( #{param1}*acos(-1)/180 ) * sin( coordinates_y*acos(-1)/180 ) ) ),2) AS distance
+        	from  restaurant_list)
+ 	where distance  &lt; 0.5 and rownum &lt;=20
+ 	</select>
+	<insert id="sirenOrder">
+      insert into siren_list (r_index, m_number, r_name, c_id, c_name, c_phone,condition_check , 
+       res_payment, r_menu, request, t_date, r_rsvnumber) 
+      values (seq_siren_list.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5},1,
+      #{param6}, #{param7}, #{param8},to_char(sysdate,'yyyy/mm/dd hh24:mi') , #{param9})
+   </insert>
+   <insert id="review">
+      insert into review (r_index, r_name, m_number, c_id, nickname, tdate,filename , 
+       contents, orifilename, grade) 
+      values (seq_review.nextval,#{param2} , #{param1}, #{param3}, #{param5},to_char(sysdate,'yyyy/mm/dd hh24:mi')
+      ,#{param7},#{param4}, #{param8}, #{param6} )
+   </insert>
+   <update id="checkReservation">
+   	 update booked_list set condition_check= 2, reject ='예약확인' where r_rsvnumber=#{0}
+   </update>
+	
+</mapper>	

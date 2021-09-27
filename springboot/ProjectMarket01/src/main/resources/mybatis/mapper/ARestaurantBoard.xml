@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.springboot.dao.ARestaurantDao">
+
+	<select id="timeorderSelect" resultType="com.study.springboot.dto.ARestaurantListDto">
+		<![CDATA[select * from (select m_number,r_name, gu_name, t_name from restaurant_list order by m_number) where rownum<=10]]>
+	</select>
+	<select id="likeSelect" resultType="com.study.springboot.dto.ARestaurantListDto">
+		<![CDATA[select * from (select m_number,r_name, gu_name, t_name from restaurant_list order by h_number) where rownum<=15]]>
+	</select>
+	<select id="searchSelect" resultType="com.study.springboot.dto.ARestaurantListDto">
+		<![CDATA[select * from (select * from restaurant_list where r_name like '%'||#{0}||'%' or gu_name='%'||#{0}||'%') where rownum <=20]]>
+	</select>
+	<select id="getMenuListDao" resultType="String">
+		select r_menu from restaurant_list where m_number=#{param1} and r_name=#{param2}
+	</select>
+	<update id="noCheckReservation">
+		update booked_list set condition_check=3 where r_rsvnumber=#{0}
+	</update>
+	<update id="checkReservation">
+		update booked_list set condition_check=1 where r_rsvnumber=#{0}
+	</update>
+	<select id="getrestaurantInfo" resultType="com.study.springboot.dto.ARestaurantListDto">
+		select * from restaurant_list where m_number=#{param1} and r_name=#{param2}
+	</select>
+	<select id="checkLikeDao" resultType="int">
+		select count(*) from good_button where m_number=#{param3} and r_name=#{param2} and c_id=#{param1}
+	</select>
+	<insert id="doLikeDao">
+		insert into good_button values (seq_good_button.nextval, #{param3},#{param2},#{param1})
+	</insert>
+	<delete id="undoLikeDao">
+		delete good_button where m_number=#{param3} and r_name=#{param2} and c_id=#{param1}
+	</delete>
+	<select id="getLikeListDao" resultType="com.study.springboot.dto.AGoodButtonDto">
+		select * from good_button where c_id=#{0}
+	</select>
+	<select id="selectLikeListDao" resultType="com.study.springboot.dto.ARestaurantListDto">
+		select * from restaurant_list where m_number=#{param1} and r_name=#{param2}
+	</select>
+	<select id="getReviewListDao" resultType="com.study.springboot.dto.AReviewDto">
+		select * from review where r_name=#{param2} and m_number=#{param1}
+	</select>
+	<select id="countReviewDao" resultType="_int">
+		select count(*) from review where r_name=#{param2} and m_number=#{param1}
+	</select>
+	<select id="getReviewGrade" resultType="String">
+		select grade from review where r_name=#{param2} and m_number=#{param1}
+	</select>
+	
+<!-- 	<select id="getReserveData" resultType="com.study.springboot.dto.AllReserveDataDto">
+		select reservedate,reservetime,count(*) count from reserveuser group by reservedate,reservetime having reservedate=#{0}
+	</select>
+	<select id="getDateDataDao" resultType="com.study.springboot.dto.AllReserveDataDto">
+		select reservedate,count(*) count from reserveuser group by reservedate order by reservedate
+	</select>
+	<update id="submitDoneCheck1Dao" >
+		update reserveuser set donecheck='Y' where username=#{0}
+	</update>
+	<select id="DoneUserInfoDao" resultType="com.study.springboot.dto.ReserveUserDto">
+		select * from reserveuser where donecheck='Y'
+	</select> -->
+</mapper>	

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.study.springboot.dao.ItNoticeDao">
+
+	<select id="noticeList" resultType="com.study.springboot.dto.NoticeDto">
+			select * from  ( select rownum num, A.* 
+                     		from booked_list A 
+							where rownum &lt;= #{param2}) B 
+							where B.num &gt;= #{param1}
+	</select>
+	<select id="searchNoticeList" resultType="com.study.springboot.dto.NoticeDto">
+			select * from  ( select rownum num, A.* 
+                     		from booked_list A 
+							where rownum &lt;= #{param2}) B 
+							where B.num &gt;= #{param1} and ${param3} =  #{param4}
+	</select>
+	
+	<select id="searchReject" resultType="com.study.springboot.dto.NoticeDto">
+		select * from booked_list where reject like #{0}
+	</select>
+	
+	<select id="searchRequest" resultType="com.study.springboot.dto.NoticeDto">
+		select * from booked_list where request like #{0}
+	</select>
+	
+	<select id="noticeView" resultType="com.study.springboot.dto.NoticeDto">
+		select * from booked_list where c_id = #{item1}
+	</select>
+	<select id="tokenList" resultType="com.study.springboot.dto.TokenDto">
+		select token from customer_list where token is not null
+	</select>
+
+	
+	<insert id="noticeWrite" parameterType="java.util.HashMap">
+		insert into mvc_noticeboard (bid, bname, btitle, bcontent, filename, bhit, bgroup, bstep, bindent)
+  		values(mvc_noticeboard_seq.nextval, #{item2}, #{item1}, #{item3}, #{item4, jdbcType=VARCHAR}, 0, mvc_noticeboard_seq.currval,0,0)
+	</insert>
+	
+	<insert id="noticeModify" parameterType="java.util.HashMap">
+		update booked_list set reject=#{item1}, request=#{item2}
+			where c_id = #{item3}
+	</insert>
+	<insert id="noticeHit">
+		update mvc_noticeboard set bhit=#{param1}
+			where bid = #{param2}
+	</insert>
+	
+	<select id="noticeCount" resultType="_int">
+		select count(*) from mvc_noticeboard
+	</select>
+	<select id="searchNoticeCount" resultType="_int">
+		select count(*) from booked_list where ${param1} = #{param2}
+	</select>
+	<select id="bookedCount" resultType="_int">
+		select count(*) from booked_list
+	</select>
+	<select id="noticeTitleCount" resultType="_int">
+		select count(*) from mvc_noticeboard
+	</select>
+	<select id="noticelistDao" resultType="com.study.springboot.dto.NoticeListDto">
+		select * from  ( select rownum num, A.* 
+                     		from mvc_noticeboard A 
+							where rownum &lt;= #{param2}) B 
+							where B.num &gt;= #{param1}
+	</select>
+	<select id="noticeTitle" resultType="com.study.springboot.dto.NoticeListDto">
+		select * from mvc_noticeboard where rownum &lt;= 3
+	</select>
+	<update id="modifyContent_view" parameterType="java.util.HashMap">
+		update mvc_noticeboard set btitle=#{item1},bname=#{item2},bcontent=#{item3},filename=#{item4, jdbcType=VARCHAR}  where bId=#{item5}
+	</update>
+	<select id="content_view" resultType="com.study.springboot.dto.NoticeListDto">
+		select * from mvc_noticeboard where bId = #{0}
+	</select>
+	<select id="noticeListCount" resultType="_int">
+		select count(*) from mvc_noticeboard
+	</select>
+	
+	<select id="sirenlistDao" resultType="com.study.springboot.dto.SirenListDto">
+		select * from siren_list order by t_date desc
+	</select>
+
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.springboot.dao.IGetUserInfoDao">
+	<!-- <update id="submitDoneCheck1Dao" >
+		update reserveuser set donecheck='Y' where username=#{0}
+	</update>-->
+	<select id="getUserinfo" resultType="com.study.springboot.dto.UserInfoDto">
+		select * from customer_list where c_id=#{0}
+	</select>
+</mapper>	

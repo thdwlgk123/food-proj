@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.springboot.dao.AReservationDao">
+	<insert id="insertRsvDao" >
+		insert into booked_list (r_index,r_rsvnumber,m_number, r_name, nickname, c_phone, b_party, condition_check, res_payment,request, tdate, time,c_id) values (seq_booked.nextval,#{r_rsvnumber},#{m_number},#{r_name},#{nickname},#{c_phone},#{b_party},#{condition_check},#{res_payment},#{request},#{tdate},#{time},#{c_id})
+	</insert>
+	<select id="getRsvMemInfoDao" resultType="com.study.springboot.dto.ACustomerListDto">
+		select * from customer_list where c_id=#{0}
+	</select>
+	<select id="getRsvInfoDao" resultType="com.study.springboot.dto.AReservationDto">
+		select * from booked_list where r_rsvnumber=#{0}
+	</select>
+<!-- 	<select id="getReserveData" resultType="com.study.springboot.dto.AllReserveDataDto">
+		select reservedate,reservetime,count(*) count from reserveuser group by reservedate,reservetime having reservedate=#{0}
+	</select>
+	<select id="getDateDataDao" resultType="com.study.springboot.dto.AllReserveDataDto">
+		select reservedate,count(*) count from reserveuser group by reservedate order by reservedate
+	</select>
+	<update id="submitDoneCheck1Dao" >
+		update reserveuser set donecheck='Y' where username=#{0}
+	</update>
+	<select id="DoneUserInfoDao" resultType="com.study.springboot.dto.ReserveUserDto">
+		select * from reserveuser where donecheck='Y'
+	</select> -->
+</mapper>	

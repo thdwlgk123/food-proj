@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.study.springboot.dao.ItGoodsDao">
+
+<!-- 	<select id="goodsArticleCount" resultType="_int">
+		select count(*) from bbs_goods
+	</select>
+	<select id="goodsList" resultType="com.study.springboot.dto.GoodsDto" parameterType="java.util.HashMap">
+		select * from (select rownum num, A.* from (select * from bbs_goods 
+			order by id desc) A where #{item2} >= rownum ) B where B.num >= #{item1}
+	</select>
+	<select id="articleCount" resultType="_int">
+		select count(*) from bbs_YT
+	</select>
+	<select id="goodsView" resultType="com.study.springboot.dto.GoodsDto">
+		select * from bbs_goods where id = #{0}
+	</select>
+	<insert id="writeGoods" parameterType="java.util.HashMap">
+		insert into bbs_goods (id, writer, title, content, price)
+			values (bbs_goods_seq.nextval, #{item1}, #{item2}, #{item3}, #{item4})
+	</insert> -->
+</mapper>
